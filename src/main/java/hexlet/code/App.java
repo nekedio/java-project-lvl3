@@ -1,7 +1,13 @@
 package hexlet.code;
 
-public class App {
+import hexlet.code.schemas.StringSchema;
+
+class App {
     public static void main(String[] args) {
-        System.out.println("Hello World!");
+        Validator v = new Validator();
+
+        StringSchema schema = v.string();
+
+        schema.isValid("");
     }
 }

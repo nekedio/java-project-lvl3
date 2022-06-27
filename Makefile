@@ -8,3 +8,6 @@ run-dist:
 
 lint:
 	./gradlew checkstyleMain
+
+test:
+	./gradlew test

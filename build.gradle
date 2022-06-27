@@ -4,13 +4,12 @@
  * This is a general purpose Gradle build.
  * Learn more about Gradle by exploring our samples at https://docs.gradle.org/7.3/samples
  */
+
 plugins {
     id 'application'
     id 'checkstyle'
+    id 'com.adarshr.test-logger' version '3.2.0'
 }
-
-group = 'hexlet.code'
-version = '1.0-SNAPSHOT'
 
 repositories {
     mavenCentral()
@@ -23,3 +22,26 @@ application {
 compileJava {
     options.release = 17
 }
+
+test {
+    useJUnitPlatform()
+}
+
+dependencies {
+    testImplementation(
+            'org.assertj:assertj-core:3.23.1',
+            'org.junit.jupiter:junit-jupiter:5.8.2',
+    )
+    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.8.2'
+    testCompileOnly 'junit:junit:4.13.2'
+    testRuntimeOnly 'org.junit.vintage:junit-vintage-engine'
+}
+
+testlogger {
+    showStandardStreams true
+}
+
+
+group = 'hexlet.code'
+version = '1.0-SNAPSHOT'
+
