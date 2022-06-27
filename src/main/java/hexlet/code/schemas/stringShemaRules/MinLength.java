@@ -11,7 +11,8 @@ public final class MinLength implements Rule {
     }
 
     @Override
-    public boolean isValid(String line) {
+    public boolean isValid(Object value) {
+        String line = (String) value;
         if (line == null) {
             return false;
         }
