@@ -1,4 +1,4 @@
-package hexlet.code.schemas.stringShemaRules;
+package hexlet.code.schemas.stringSchemaRules;
 
 import hexlet.code.schemas.Rule;
 

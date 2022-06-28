@@ -1,8 +1,8 @@
 package hexlet.code.schemas;
 
-import hexlet.code.schemas.stringShemaRules.Contains;
-import hexlet.code.schemas.stringShemaRules.MinLength;
-import hexlet.code.schemas.stringShemaRules.Required;
+import hexlet.code.schemas.stringSchemaRules.Contains;
+import hexlet.code.schemas.stringSchemaRules.MinLength;
+import hexlet.code.schemas.stringSchemaRules.Required;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -28,7 +28,6 @@ public final class StringSchema {
 
 
     public boolean isValid(String line) {
-
         for (Rule check : checks) {
             if (!check.isValid(line)) {
                 return false;

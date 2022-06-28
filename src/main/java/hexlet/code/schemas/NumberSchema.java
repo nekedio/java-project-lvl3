@@ -8,7 +8,6 @@ import java.util.HashSet;
 import java.util.Set;
 
 public final class NumberSchema {
-
     private final Set<Rule> checks = new HashSet<>();
     public NumberSchema required() {
         checks.add(new Required());
