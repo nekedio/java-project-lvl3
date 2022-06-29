@@ -7,7 +7,7 @@ import hexlet.code.schemas.numberSchemaRules.Required;
 import java.util.HashSet;
 import java.util.Set;
 
-public final class NumberSchema {
+public final class NumberSchema implements BaseSchema {
     private final Set<Rule> checks = new HashSet<>();
     public NumberSchema required() {
         checks.add(new Required());

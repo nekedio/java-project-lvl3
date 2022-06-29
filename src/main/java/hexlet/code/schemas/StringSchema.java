@@ -7,7 +7,7 @@ import hexlet.code.schemas.stringSchemaRules.Required;
 import java.util.HashSet;
 import java.util.Set;
 
-public final class StringSchema {
+public final class StringSchema implements BaseSchema {
 
     private final Set<Rule> checks = new HashSet<>();
 
@@ -27,7 +27,7 @@ public final class StringSchema {
     }
 
 
-    public boolean isValid(String line) {
+    public boolean isValid(Object line) {
         for (Rule check : checks) {
             if (!check.isValid(line)) {
                 return false;
