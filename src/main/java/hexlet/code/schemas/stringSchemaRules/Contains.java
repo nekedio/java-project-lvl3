@@ -1,6 +1,5 @@
 package hexlet.code.schemas.stringSchemaRules;
 
-//import hexlet.code.schemas.Rule;
 import java.util.function.Predicate;
 
 

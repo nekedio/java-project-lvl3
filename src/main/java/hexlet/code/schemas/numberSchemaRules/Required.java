@@ -6,6 +6,6 @@ public final class Required implements Predicate<Object> {
 
     @Override
     public boolean test(Object value) {
-        return value != null;
+        return value instanceof Integer;
     }
 }
