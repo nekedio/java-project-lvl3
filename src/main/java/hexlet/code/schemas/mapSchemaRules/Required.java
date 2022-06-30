@@ -1,10 +1,10 @@
 package hexlet.code.schemas.mapSchemaRules;
 
-import hexlet.code.schemas.Rule;
+import java.util.function.Predicate;
 
-public final class Required implements Rule {
+public final class Required implements Predicate<Object> {
     @Override
-    public boolean isValid(Object value) {
+    public boolean test(Object value) {
         return value != null;
     }
 }

@@ -3,13 +3,13 @@ package hexlet.code.schemas;
 import hexlet.code.schemas.stringSchemaRules.Contains;
 import hexlet.code.schemas.stringSchemaRules.MinLength;
 import hexlet.code.schemas.stringSchemaRules.Required;
-
 import java.util.HashSet;
 import java.util.Set;
+import java.util.function.Predicate;
 
 public final class StringSchema implements BaseSchema {
 
-    private final Set<Rule> checks = new HashSet<>();
+    private final Set<Predicate<Object>> checks = new HashSet<>();
 
     public StringSchema required() {
         checks.add(new Required());
@@ -28,8 +28,8 @@ public final class StringSchema implements BaseSchema {
 
 
     public boolean isValid(Object line) {
-        for (Rule check : checks) {
-            if (!check.isValid(line)) {
+        for (Predicate<Object> check : checks) {
+            if (!check.test(line)) {
                 return false;
             }
         }

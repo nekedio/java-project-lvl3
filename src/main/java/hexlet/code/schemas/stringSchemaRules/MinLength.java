@@ -1,8 +1,8 @@
 package hexlet.code.schemas.stringSchemaRules;
 
-import hexlet.code.schemas.Rule;
+import java.util.function.Predicate;
 
-public final class MinLength implements Rule {
+public final class MinLength implements Predicate<Object> {
 
     private int minLength;
 
@@ -11,7 +11,7 @@ public final class MinLength implements Rule {
     }
 
     @Override
-    public boolean isValid(Object value) {
+    public boolean test(Object value) {
         String line = (String) value;
         if (line == null) {
             return false;

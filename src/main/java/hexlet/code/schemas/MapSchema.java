@@ -7,9 +7,10 @@ import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
+import java.util.function.Predicate;
 
 public final class MapSchema implements BaseSchema {
-    private final Set<Rule> checks = new HashSet<>();
+    private final Set<Predicate<Object>> checks = new HashSet<>();
 
     private final Map<String, BaseSchema> mapChecks = new HashMap<>();
 
@@ -24,8 +25,8 @@ public final class MapSchema implements BaseSchema {
     }
 
     public boolean isValid(Object value) {
-        for (Rule check : checks) {
-            if (!check.isValid(value)) {
+        for (Predicate<Object> check : checks) {
+            if (!check.test(value)) {
                 return false;
             }
         }

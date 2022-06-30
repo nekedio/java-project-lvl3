@@ -1,10 +1,9 @@
 package hexlet.code.schemas.mapSchemaRules;
 
-import hexlet.code.schemas.Rule;
-
 import java.util.Map;
+import java.util.function.Predicate;
 
-public final class Sizeof implements Rule {
+public final class Sizeof implements Predicate<Object> {
     private final int count;
 
     public Sizeof(int mapCount) {
@@ -12,7 +11,7 @@ public final class Sizeof implements Rule {
     }
 
     @Override
-    public boolean isValid(Object value) {
+    public boolean test(Object value) {
         Map map = (Map) value;
         return count == map.size();
     }

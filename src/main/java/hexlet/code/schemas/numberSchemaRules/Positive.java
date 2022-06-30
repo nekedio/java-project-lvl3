@@ -1,10 +1,10 @@
 package hexlet.code.schemas.numberSchemaRules;
 
-import hexlet.code.schemas.Rule;
+import java.util.function.Predicate;
 
-public final class Positive implements Rule {
+public final class Positive implements Predicate<Object> {
     @Override
-    public boolean isValid(Object value) {
+    public boolean test(Object value) {
         if (value == null) {
             return true;
         }

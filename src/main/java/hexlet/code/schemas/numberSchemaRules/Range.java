@@ -1,8 +1,8 @@
 package hexlet.code.schemas.numberSchemaRules;
 
-import hexlet.code.schemas.Rule;
+import java.util.function.Predicate;
 
-public final class Range implements Rule {
+public final class Range implements Predicate<Object> {
 
     private int numBegin;
     private int numEng;
@@ -13,7 +13,7 @@ public final class Range implements Rule {
     }
 
     @Override
-    public boolean isValid(Object value) {
+    public boolean test(Object value) {
         int num = (int) value;
 
         if (num < numBegin || num > numEng) {
