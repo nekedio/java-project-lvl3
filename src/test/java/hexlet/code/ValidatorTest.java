@@ -72,7 +72,7 @@ public class ValidatorTest {
         schema.required();
 
         assertThat(schema.isValid(null)).isFalse();
-        assertThat(schema.isValid(new HashMap())).isTrue();
+        assertThat(schema.isValid(new HashMap<String, Object>())).isTrue();
         Map<String, String> data = new HashMap<>();
         data.put("key1", "value1");
         assertThat(schema.isValid(data)).isTrue();
