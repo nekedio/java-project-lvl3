@@ -1,22 +1,27 @@
 package hexlet.code.schemas;
 
-import hexlet.code.schemas.stringSchemaRules.Contains;
-import hexlet.code.schemas.stringSchemaRules.MinLength;
-import hexlet.code.schemas.stringSchemaRules.Required;
-
 public final class StringSchema extends BaseSchema {
     public StringSchema required() {
-        super.addCheck(new Required());
+        super.addCheck(
+                "required",
+                value -> value instanceof String && !value.toString().equals("")
+        );
         return this;
     }
 
     public StringSchema contains(String substring) {
-        super.addCheck(new Contains(substring));
+        super.addCheck(
+                "contains",
+                value -> value.toString().contains(substring)
+        );
         return this;
     }
 
     public StringSchema minLength(int minLength) {
-        super.addCheck(new MinLength(minLength));
+        super.addCheck(
+                "minLength",
+                value -> value.toString().length() >= minLength
+        );
         return this;
     }
 }

@@ -1,22 +1,27 @@
 package hexlet.code.schemas;
 
-import hexlet.code.schemas.numberSchemaRules.Positive;
-import hexlet.code.schemas.numberSchemaRules.Range;
-import hexlet.code.schemas.numberSchemaRules.Required;
-
 public final class NumberSchema extends BaseSchema {
     public NumberSchema required() {
-        super.addCheck(new Required());
+        super.addCheck(
+                "required",
+                value -> value instanceof Integer
+        );
         return this;
     }
 
     public NumberSchema positive() {
-        super.addCheck(new Positive());
+        super.addCheck(
+                "positive",
+                value -> !(value instanceof Integer) || (int) value > 0
+        );
         return this;
     }
 
     public NumberSchema range(int num1, int num2)  {
-        super.addCheck(new Range(num1, num2));
+        super.addCheck(
+                "range",
+                value -> (int) value >= num1 && (int) value <= num2
+        );
         return this;
     }
 }

@@ -1,7 +1,5 @@
 package hexlet.code.schemas;
 
-import hexlet.code.schemas.mapSchemaRules.Required;
-import hexlet.code.schemas.mapSchemaRules.Sizeof;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
@@ -10,17 +8,26 @@ public final class MapSchema extends BaseSchema {
     private final Map<String, BaseSchema> nestedChecks = new LinkedHashMap<>();
 
     public MapSchema required() {
-        super.addCheck(new Required());
+        super.addCheck(
+                "required",
+                value -> value instanceof Map
+        );
         return this;
     }
 
     public MapSchema sizeof(int count) {
-        super.addCheck(new Sizeof(count));
+        super.addCheck(
+                "sizeof(" + count + ")",
+                value -> {
+                    Map map = (Map) value;
+                    return count == map.size();
+                }
+        );
         return this;
     }
 
     public boolean isValid(Map<String, Object> map) {
-        if (map == null) {
+        if (map == null || map.size() == 0) {
             return isValid((Object) map);
         }
 
