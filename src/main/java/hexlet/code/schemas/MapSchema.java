@@ -23,9 +23,19 @@ public final class MapSchema extends BaseSchema {
         return this;
     }
 
-    public void shape(Map<String, BaseSchema> schemas) {
-        for (String key : schemas.keySet()) {
-            super.addNestedChecks(key, schemas.get(key));
-        }
+    public MapSchema shape(Map<String, BaseSchema> schemas) {
+        super.addCheck(
+                "shape",
+                value -> {
+                    Map<String, Object> val = (Map<String, Object>) value;
+                    for (String key : val.keySet()) {
+                        if (!schemas.get(key).isValid(val.get(key))) {
+                            return false;
+                        }
+                    }
+                    return true;
+                }
+        );
+        return this;
     }
 }
