@@ -37,7 +37,9 @@ schema.minLength(10)).isValid("whatthe") // false
 schema.isValid("whattheqqqq")) // true
 
 ```
+
 [![asciicast](https://asciinema.org/a/507720.svg)](https://asciinema.org/a/507720)
+
 
 ## Validation of numbers
 
